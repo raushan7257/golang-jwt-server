@@ -7,7 +7,6 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-// Upgrade HTTP connection to WebSocket
 var upgrader = websocket.Upgrader{
     CheckOrigin: func(r *http.Request) bool { return true },
 }
@@ -40,10 +39,7 @@ func WsHandler(w http.ResponseWriter, r *http.Request) {
             break
         }
 
-
-
         command := string(msg)
-
 
         switch command{
             case "start":

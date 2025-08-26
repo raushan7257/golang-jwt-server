@@ -8,7 +8,7 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
-var jwtKey = []byte("supersecret123!@#") // example fixed secret key
+var jwtKey = []byte("supersecret123!@#")
 
 func JWTAuth(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -17,7 +17,7 @@ func JWTAuth(next http.Handler) http.Handler {
 			http.Error(w, "Missing token", http.StatusUnauthorized)
 			return
 		}
-	
+
 		tokenString := strings.TrimSpace(strings.TrimPrefix(authHeader, "Bearer "))
 
 		if tokenString == "" {
